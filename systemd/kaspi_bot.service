@@ -1,1 +1,17 @@
+[Unit]
+Description=Kaspi Bot Telegram (VPS)
+After=network-online.target
 
+[Service]
+User=kaspi
+WorkingDirectory=/home/kaspi/kaspi_bot
+ExecStart=/home/kaspi/kaspi_bot/venv/bin/python bot.py
+Restart=on-failure
+RestartSec=10
+Environment=TELEGRAM_TOKEN=YOUR_TELEGRAM_TOKEN
+Environment=KASPI_BASE_URL=https://api.kaspi.example
+Environment=KASPI_CLIENT_ID=YOUR_CLIENT_ID
+Environment=KASPI_CLIENT_SECRET=YOUR_CLIENT_SECRET
+
+[Install]
+WantedBy=multi-user.target
